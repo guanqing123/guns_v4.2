@@ -55,9 +55,15 @@ public class WebGeneratorConfig extends AbstractGeneratorConfig {
         strategyConfig.setInclude(new String[]{genQo.getTableName()});
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         packageConfig.setParent(null);
+        /* 2020.2.17
         packageConfig.setEntity(genQo.getProjectPackage() + ".modular.system.model");
         packageConfig.setMapper(genQo.getProjectPackage() + ".modular.system.dao");
         packageConfig.setXml(genQo.getProjectPackage() + ".modular.system.dao.mapping");
+        */
+        contextConfig.setModuleName(genQo.getModuleName());	// 从72行前置到这里
+        packageConfig.setEntity(genQo.getProjectPackage() + ".modular."+contextConfig.getModuleName()+".model");
+        packageConfig.setMapper(genQo.getProjectPackage() + ".modular."+contextConfig.getModuleName()+".dao");
+        packageConfig.setXml(genQo.getProjectPackage() + ".modular."+contextConfig.getModuleName()+".dao.mapping");
 
         /**
          * 业务代码配置
