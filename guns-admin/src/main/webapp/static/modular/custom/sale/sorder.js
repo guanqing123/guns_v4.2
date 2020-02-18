@@ -17,9 +17,19 @@ Sorder.initColumn = function () {
             title:'<span class="scan">产品名称- - -扫描枪录入</span><button class="switch switch-anim" onclick="Sorder.checkNum(this)" type="checkbox"></button>',
             width : 300,
             editor: {
-            	type: 'textbox',
+            	type: 'combogrid',
             	options: {
-            		required: true
+            		required: true,
+            		buttonIcon: 'fa fa-ellipsis-h fa-lg',
+                    buttonAlign: 'right',
+                    panelWidth: 500,
+                    idField: 'id',
+                    textField: 'name',
+                    mode: 'remote',
+                    url: Feng.ctxPath + '/sale/searchGoodsList',
+                    method: 'get',
+                    prompt: '输入关键字后自动搜索',
+                    hasDownArrow: false
             	}
             }
         },
